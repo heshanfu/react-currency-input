@@ -96,18 +96,18 @@ Object.defineProperty(exports, "default", {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 },{"./hardCopyObject":14}],4:[function(require,module,exports) {
 module.exports = {
-  "symbol": "R$",
-  "precision": 2,
-  "decimal": ",",
-  "separator": "."
-}
-;
-},{}],5:[function(require,module,exports) {
-module.exports = {
   "symbol": "$",
   "precision": 2,
   "decimal": ".",
   "separator": ","
+}
+;
+},{}],5:[function(require,module,exports) {
+module.exports = {
+  "symbol": "R$",
+  "precision": 2,
+  "decimal": ",",
+  "separator": "."
 }
 ;
 },{}],3:[function(require,module,exports) {
@@ -136,7 +136,7 @@ Object.defineProperty(exports, "BRL", {
 });
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./BRL":4,"./USD":5}],18:[function(require,module,exports) {
+},{"./USD":4,"./BRL":5}],18:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1960,7 +1960,7 @@ if ("development" !== "production") {
     module.exports = react;
   })();
 }
-},{"object-assign":19,"prop-types/checkPropTypes":16,"fbjs/lib/emptyObject":24,"fbjs/lib/invariant":21,"fbjs/lib/warning":22,"fbjs/lib/emptyFunction":20}],6:[function(require,module,exports) {
+},{"object-assign":19,"prop-types/checkPropTypes":16,"fbjs/lib/invariant":21,"fbjs/lib/emptyObject":24,"fbjs/lib/warning":22,"fbjs/lib/emptyFunction":20}],6:[function(require,module,exports) {
 'use strict';
 
 if ("development" === 'production') {
@@ -2762,7 +2762,7 @@ function Module() {
 module.bundle.Module = Module;
 
 if (!module.bundle.parent) {
-  var ws = new WebSocket('ws://localhost:57891/');
+  var ws = new WebSocket('ws://localhost:51302/');
   ws.onmessage = function(event) {
     var data = JSON.parse(event.data);
 

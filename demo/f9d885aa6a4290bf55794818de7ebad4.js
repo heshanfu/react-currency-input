@@ -204,7 +204,7 @@ var formatCurrency = function formatCurrency() {
 };
 
 exports.default = formatCurrency;
-},{"../../utils":4,"../../constants":23,"currency.js":28}],16:[function(require,module,exports) {
+},{"../../constants":23,"../../utils":4,"currency.js":28}],16:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -357,7 +357,7 @@ if ("development" !== 'production') {
 }
 
 module.exports = emptyObject;
-},{}],25:[function(require,module,exports) {
+},{}],26:[function(require,module,exports) {
 "use strict";
 
 /**
@@ -417,7 +417,7 @@ var U={Children:{map:function(a,b,e){if(null==a)return a;var c=[];T(a,c,null,b,e
 d=a.key,g=a.ref,k=a._owner;if(null!=b){void 0!==b.ref&&(g=b.ref,k=G.current);void 0!==b.key&&(d=""+b.key);if(a.type&&a.type.defaultProps)var f=a.type.defaultProps;for(h in b)H.call(b,h)&&!I.hasOwnProperty(h)&&(c[h]=void 0===b[h]&&void 0!==f?f[h]:b[h])}var h=arguments.length-2;if(1===h)c.children=e;else if(1<h){f=Array(h);for(var l=0;l<h;l++)f[l]=arguments[l+2];c.children=f}return{$$typeof:r,type:a.type,key:d,ref:g,props:c,_owner:k}},createFactory:function(a){var b=J.bind(null,a);b.type=a;return b},
 isValidElement:K,version:"16.2.0",__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED:{ReactCurrentOwner:G,assign:m}},V=Object.freeze({default:U}),W=V&&U||V;module.exports=W["default"]?W["default"]:W;
 
-},{"object-assign":24,"fbjs/lib/emptyObject":29,"fbjs/lib/emptyFunction":25}],22:[function(require,module,exports) {
+},{"object-assign":24,"fbjs/lib/emptyObject":29,"fbjs/lib/emptyFunction":26}],22:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -432,6 +432,60 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 module.exports = ReactPropTypesSecret;
 
 },{}],27:[function(require,module,exports) {
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+'use strict';
+
+/**
+ * Use invariant() to assert state which your program assumes to be true.
+ *
+ * Provide sprintf-style format (only %s is supported) and arguments
+ * to provide information about what broke and what you were
+ * expecting.
+ *
+ * The invariant message will be stripped in production, but the invariant
+ * will remain to ensure logic does not differ in production.
+ */
+
+var validateFormat = function validateFormat(format) {};
+
+if ("development" !== 'production') {
+  validateFormat = function validateFormat(format) {
+    if (format === undefined) {
+      throw new Error('invariant requires an error message argument');
+    }
+  };
+}
+
+function invariant(condition, format, a, b, c, d, e, f) {
+  validateFormat(format);
+
+  if (!condition) {
+    var error;
+    if (format === undefined) {
+      error = new Error('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
+    } else {
+      var args = [a, b, c, d, e, f];
+      var argIndex = 0;
+      error = new Error(format.replace(/%s/g, function () {
+        return args[argIndex++];
+      }));
+      error.name = 'Invariant Violation';
+    }
+
+    error.framesToPop = 1; // we don't care about invariant's own frame
+    throw error;
+  }
+}
+
+module.exports = invariant;
+},{}],25:[function(require,module,exports) {
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
@@ -494,61 +548,7 @@ if ("development" !== 'production') {
 }
 
 module.exports = warning;
-},{"./emptyFunction":25}],26:[function(require,module,exports) {
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- */
-
-'use strict';
-
-/**
- * Use invariant() to assert state which your program assumes to be true.
- *
- * Provide sprintf-style format (only %s is supported) and arguments
- * to provide information about what broke and what you were
- * expecting.
- *
- * The invariant message will be stripped in production, but the invariant
- * will remain to ensure logic does not differ in production.
- */
-
-var validateFormat = function validateFormat(format) {};
-
-if ("development" !== 'production') {
-  validateFormat = function validateFormat(format) {
-    if (format === undefined) {
-      throw new Error('invariant requires an error message argument');
-    }
-  };
-}
-
-function invariant(condition, format, a, b, c, d, e, f) {
-  validateFormat(format);
-
-  if (!condition) {
-    var error;
-    if (format === undefined) {
-      error = new Error('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
-    } else {
-      var args = [a, b, c, d, e, f];
-      var argIndex = 0;
-      error = new Error(format.replace(/%s/g, function () {
-        return args[argIndex++];
-      }));
-      error.name = 'Invariant Violation';
-    }
-
-    error.framesToPop = 1; // we don't care about invariant's own frame
-    throw error;
-  }
-}
-
-module.exports = invariant;
-},{}],21:[function(require,module,exports) {
+},{"./emptyFunction":26}],21:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -608,7 +608,7 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
 }
 
 module.exports = checkPropTypes;
-},{"./lib/ReactPropTypesSecret":22,"fbjs/lib/warning":27,"fbjs/lib/invariant":26}],11:[function(require,module,exports) {
+},{"./lib/ReactPropTypesSecret":22,"fbjs/lib/invariant":27,"fbjs/lib/warning":25}],11:[function(require,module,exports) {
 /** @license React v16.2.0
  * react.development.js
  *
@@ -1960,7 +1960,7 @@ if ("development" !== "production") {
     module.exports = react;
   })();
 }
-},{"object-assign":24,"prop-types/checkPropTypes":21,"fbjs/lib/emptyObject":29,"fbjs/lib/invariant":26,"fbjs/lib/warning":27,"fbjs/lib/emptyFunction":25}],6:[function(require,module,exports) {
+},{"object-assign":24,"prop-types/checkPropTypes":21,"fbjs/lib/warning":25,"fbjs/lib/emptyObject":29,"fbjs/lib/invariant":27,"fbjs/lib/emptyFunction":26}],6:[function(require,module,exports) {
 'use strict';
 
 if ("development" === 'production') {
@@ -2485,7 +2485,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
 
   return ReactPropTypes;
 };
-},{"./checkPropTypes":21,"./lib/ReactPropTypesSecret":22,"object-assign":24,"fbjs/lib/emptyFunction":25,"fbjs/lib/invariant":26,"fbjs/lib/warning":27}],18:[function(require,module,exports) {
+},{"./checkPropTypes":21,"./lib/ReactPropTypesSecret":22,"object-assign":24,"fbjs/lib/warning":25,"fbjs/lib/emptyFunction":26,"fbjs/lib/invariant":27}],18:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -2545,7 +2545,7 @@ module.exports = function() {
   return ReactPropTypes;
 };
 
-},{"./lib/ReactPropTypesSecret":22,"fbjs/lib/emptyFunction":25,"fbjs/lib/invariant":26}],14:[function(require,module,exports) {
+},{"./lib/ReactPropTypesSecret":22,"fbjs/lib/emptyFunction":26,"fbjs/lib/invariant":27}],14:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -2853,7 +2853,91 @@ var EventListener = {
 };
 
 module.exports = EventListener;
-},{"./emptyFunction":25}],32:[function(require,module,exports) {
+},{"./emptyFunction":26}],41:[function(require,module,exports) {
+'use strict';
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @typechecks
+ */
+
+/**
+ * @param {*} object The object to check.
+ * @return {boolean} Whether or not the object is a DOM node.
+ */
+function isNode(object) {
+  var doc = object ? object.ownerDocument || object : document;
+  var defaultView = doc.defaultView || window;
+  return !!(object && (typeof defaultView.Node === 'function' ? object instanceof defaultView.Node : typeof object === 'object' && typeof object.nodeType === 'number' && typeof object.nodeName === 'string'));
+}
+
+module.exports = isNode;
+},{}],38:[function(require,module,exports) {
+'use strict';
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @typechecks
+ */
+
+var isNode = require('./isNode');
+
+/**
+ * @param {*} object The object to check.
+ * @return {boolean} Whether or not the object is a DOM text node.
+ */
+function isTextNode(object) {
+  return isNode(object) && object.nodeType == 3;
+}
+
+module.exports = isTextNode;
+},{"./isNode":41}],32:[function(require,module,exports) {
+'use strict';
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+var isTextNode = require('./isTextNode');
+
+/*eslint-disable no-bitwise */
+
+/**
+ * Checks if a given DOM node contains or is another DOM node.
+ */
+function containsNode(outerNode, innerNode) {
+  if (!outerNode || !innerNode) {
+    return false;
+  } else if (outerNode === innerNode) {
+    return true;
+  } else if (isTextNode(outerNode)) {
+    return false;
+  } else if (isTextNode(innerNode)) {
+    return containsNode(outerNode, innerNode.parentNode);
+  } else if ('contains' in outerNode) {
+    return outerNode.contains(innerNode);
+  } else if (outerNode.compareDocumentPosition) {
+    return !!(outerNode.compareDocumentPosition(innerNode) & 16);
+  } else {
+    return false;
+  }
+}
+
+module.exports = containsNode;
+},{"./isTextNode":38}],33:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -2890,7 +2974,7 @@ function getActiveElement(doc) /*?DOMElement*/{
 }
 
 module.exports = getActiveElement;
-},{}],33:[function(require,module,exports) {
+},{}],34:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -2956,91 +3040,7 @@ function shallowEqual(objA, objB) {
 }
 
 module.exports = shallowEqual;
-},{}],41:[function(require,module,exports) {
-'use strict';
-
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @typechecks
- */
-
-/**
- * @param {*} object The object to check.
- * @return {boolean} Whether or not the object is a DOM node.
- */
-function isNode(object) {
-  var doc = object ? object.ownerDocument || object : document;
-  var defaultView = doc.defaultView || window;
-  return !!(object && (typeof defaultView.Node === 'function' ? object instanceof defaultView.Node : typeof object === 'object' && typeof object.nodeType === 'number' && typeof object.nodeName === 'string'));
-}
-
-module.exports = isNode;
-},{}],38:[function(require,module,exports) {
-'use strict';
-
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @typechecks
- */
-
-var isNode = require('./isNode');
-
-/**
- * @param {*} object The object to check.
- * @return {boolean} Whether or not the object is a DOM text node.
- */
-function isTextNode(object) {
-  return isNode(object) && object.nodeType == 3;
-}
-
-module.exports = isTextNode;
-},{"./isNode":41}],34:[function(require,module,exports) {
-'use strict';
-
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * 
- */
-
-var isTextNode = require('./isTextNode');
-
-/*eslint-disable no-bitwise */
-
-/**
- * Checks if a given DOM node contains or is another DOM node.
- */
-function containsNode(outerNode, innerNode) {
-  if (!outerNode || !innerNode) {
-    return false;
-  } else if (outerNode === innerNode) {
-    return true;
-  } else if (isTextNode(outerNode)) {
-    return false;
-  } else if (isTextNode(innerNode)) {
-    return containsNode(outerNode, innerNode.parentNode);
-  } else if ('contains' in outerNode) {
-    return outerNode.contains(innerNode);
-  } else if (outerNode.compareDocumentPosition) {
-    return !!(outerNode.compareDocumentPosition(innerNode) & 16);
-  } else {
-    return false;
-  }
-}
-
-module.exports = containsNode;
-},{"./isTextNode":38}],35:[function(require,module,exports) {
+},{}],35:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -3296,7 +3296,7 @@ var Sg={createPortal:Qg,findDOMNode:function(a){if(null==a)return null;if(1===a.
 E("40");return a._reactRootContainer?(Z.unbatchedUpdates(function(){Pg(null,null,a,!1,function(){a._reactRootContainer=null})}),!0):!1},unstable_createPortal:Qg,unstable_batchedUpdates:tc,unstable_deferredUpdates:Z.deferredUpdates,flushSync:Z.flushSync,__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED:{EventPluginHub:mb,EventPluginRegistry:Va,EventPropagators:Cb,ReactControlledComponent:qc,ReactDOMComponentTree:sb,ReactDOMEventListener:xd}};
 Z.injectIntoDevTools({findFiberByHostInstance:pb,bundleType:0,version:"16.2.0",rendererPackageName:"react-dom"});var Tg=Object.freeze({default:Sg}),Ug=Tg&&Sg||Tg;module.exports=Ug["default"]?Ug["default"]:Ug;
 
-},{"react":6,"object-assign":24,"fbjs/lib/ExecutionEnvironment":30,"fbjs/lib/EventListener":31,"fbjs/lib/emptyFunction":25,"fbjs/lib/getActiveElement":32,"fbjs/lib/shallowEqual":33,"fbjs/lib/containsNode":34,"fbjs/lib/focusNode":35,"fbjs/lib/emptyObject":29}],39:[function(require,module,exports) {
+},{"react":6,"object-assign":24,"fbjs/lib/emptyFunction":26,"fbjs/lib/ExecutionEnvironment":30,"fbjs/lib/EventListener":31,"fbjs/lib/containsNode":32,"fbjs/lib/getActiveElement":33,"fbjs/lib/shallowEqual":34,"fbjs/lib/focusNode":35,"fbjs/lib/emptyObject":29}],39:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -18790,7 +18790,7 @@ if ("development" !== "production") {
     module.exports = reactDom;
   })();
 }
-},{"react":6,"object-assign":24,"prop-types/checkPropTypes":21,"fbjs/lib/ExecutionEnvironment":30,"fbjs/lib/invariant":26,"fbjs/lib/warning":27,"fbjs/lib/emptyFunction":25,"fbjs/lib/getActiveElement":32,"fbjs/lib/shallowEqual":33,"fbjs/lib/EventListener":31,"fbjs/lib/containsNode":34,"fbjs/lib/focusNode":35,"fbjs/lib/emptyObject":29,"fbjs/lib/hyphenateStyleName":36,"fbjs/lib/camelizeStyleName":37}],7:[function(require,module,exports) {
+},{"react":6,"object-assign":24,"prop-types/checkPropTypes":21,"fbjs/lib/invariant":27,"fbjs/lib/ExecutionEnvironment":30,"fbjs/lib/warning":25,"fbjs/lib/EventListener":31,"fbjs/lib/emptyFunction":26,"fbjs/lib/getActiveElement":33,"fbjs/lib/shallowEqual":34,"fbjs/lib/focusNode":35,"fbjs/lib/hyphenateStyleName":36,"fbjs/lib/emptyObject":29,"fbjs/lib/camelizeStyleName":37,"fbjs/lib/containsNode":32}],7:[function(require,module,exports) {
 'use strict';
 
 function checkDCE() {
@@ -18970,7 +18970,7 @@ function Module() {
 module.bundle.Module = Module;
 
 if (!module.bundle.parent) {
-  var ws = new WebSocket('ws://localhost:57887/');
+  var ws = new WebSocket('ws://localhost:57952/');
   ws.onmessage = function(event) {
     var data = JSON.parse(event.data);
 
