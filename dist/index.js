@@ -2762,7 +2762,7 @@ function Module() {
 module.bundle.Module = Module;
 
 if (!module.bundle.parent) {
-  var ws = new WebSocket('ws://localhost:57891/');
+  var ws = new WebSocket('ws://localhost:57948/');
   ws.onmessage = function(event) {
     var data = JSON.parse(event.data);
 
