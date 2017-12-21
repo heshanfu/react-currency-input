@@ -96,18 +96,18 @@ Object.defineProperty(exports, "default", {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 },{"./hardCopyObject":14}],4:[function(require,module,exports) {
 module.exports = {
-  "symbol": "$",
-  "precision": 2,
-  "decimal": ".",
-  "separator": ","
-}
-;
-},{}],5:[function(require,module,exports) {
-module.exports = {
   "symbol": "R$",
   "precision": 2,
   "decimal": ",",
   "separator": "."
+}
+;
+},{}],5:[function(require,module,exports) {
+module.exports = {
+  "symbol": "$",
+  "precision": 2,
+  "decimal": ".",
+  "separator": ","
 }
 ;
 },{}],3:[function(require,module,exports) {
@@ -136,7 +136,7 @@ Object.defineProperty(exports, "BRL", {
 });
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./USD":4,"./BRL":5}],18:[function(require,module,exports) {
+},{"./BRL":4,"./USD":5}],18:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2762,7 +2762,7 @@ function Module() {
 module.bundle.Module = Module;
 
 if (!module.bundle.parent) {
-  var ws = new WebSocket('ws://localhost:57432/');
+  var ws = new WebSocket('ws://localhost:57891/');
   ws.onmessage = function(event) {
     var data = JSON.parse(event.data);
 

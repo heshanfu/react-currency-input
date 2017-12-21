@@ -1,6 +1,6 @@
 {
-  "name": "pismo-react-currency-input",
-  "version": "0.1.0",
+  "name": "@pismo/react-currency-input",
+  "version": "1.0.0",
   "description": "React currency input component",
   "main": "dist/index.js",
   "repository": "https://github.com/pismo/react-currency-input.git",

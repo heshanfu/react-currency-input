@@ -3,13 +3,13 @@
 
 ## Installation
 
-> yarn add pismo-react-currency-input
+> yarn add @pismo/react-currency-input
 
 ## Usage
 
 ```js
 import React, { Component } from 'react'
-import CurrencyInput from 'pismo-react-currency-input'
+import CurrencyInput from '@pismo/react-currency-input'
 
 class MyComponent extends Component {
   constructor(props) {
