@@ -65,7 +65,7 @@ require = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({14:[function(require,module,exports) {
+})({15:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -77,7 +77,7 @@ var hardCopyObject = function hardCopyObject() {
 };
 
 exports.default = hardCopyObject;
-},{}],8:[function(require,module,exports) {
+},{}],9:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94,7 +94,7 @@ Object.defineProperty(exports, "default", {
 });
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./hardCopyObject":14}],4:[function(require,module,exports) {
+},{"./hardCopyObject":15}],5:[function(require,module,exports) {
 module.exports = {
   "symbol": "$",
   "precision": 2,
@@ -102,7 +102,7 @@ module.exports = {
   "separator": ","
 }
 ;
-},{}],5:[function(require,module,exports) {
+},{}],6:[function(require,module,exports) {
 module.exports = {
   "symbol": "R$",
   "precision": 2,
@@ -110,7 +110,7 @@ module.exports = {
   "separator": "."
 }
 ;
-},{}],3:[function(require,module,exports) {
+},{}],4:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -136,7 +136,7 @@ Object.defineProperty(exports, "BRL", {
 });
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./USD":4,"./BRL":5}],18:[function(require,module,exports) {
+},{"./USD":5,"./BRL":6}],19:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -151,7 +151,7 @@ var currencyConfigurations = _interopRequireWildcard(_currencyConfigurations);
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 exports.currencyConfigurations = currencyConfigurations;
-},{"./currencyConfigurations":3}],23:[function(require,module,exports) {
+},{"./currencyConfigurations":4}],24:[function(require,module,exports) {
 /*!
  * currency.js - v1.0.1
  * http://scurker.github.io/currency.js
@@ -164,7 +164,7 @@ d)e*=b.value;else if("string"===typeof b)c=new RegExp("[^-\\d"+g+"]","g"),g=new 
 n=/(\d)(?=(\d{3})+\b)/g,p=/\.(\d+)$/;d.prototype={add:function(b){var a=this.s,f=this.p;return d((this.intValue+c(b,a))/f,a)},subtract:function(b){var a=this.s,f=this.p;return d((this.intValue-c(b,a))/f,a)},multiply:function(b){var a=this.s;return d(this.intValue*c(b,a,!1)/Math.pow(10,a.precision+2),a)},divide:function(b){var a=this.s;return d(this.intValue/c(b,a,!1),a)},distribute:function(b){var a=this.intValue,c=this.p,g=this.s,k=[],e=Math[0<=a?"floor":"ceil"](a/b);for(a=Math.abs(a-e*b);0!==b;b--){var h=
 d(e/c,g);0<a--&&(h=0<=h.value?h.add(1/c):h.subtract(1/c));k.push(h)}return k},dollars:function(){return~~this.value},cents:function(){return~~(this.intValue%this.p)},format:function(b){var a=this.s,c=a.formatWithSymbol,d=a.symbol,k=a.separator;a=a.decimal;"undefined"===typeof b&&(b=c);return((b?d:"")+this).replace(n,"$1"+k).replace(p,a+"$1")},toString:function(){return(this.intValue/this.p).toFixed(this.s.precision)},toJSON:function(){return this.value}};return d});
 
-},{}],15:[function(require,module,exports) {
+},{}],16:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -204,7 +204,7 @@ var formatCurrency = function formatCurrency() {
 };
 
 exports.default = formatCurrency;
-},{"../../utils":2,"../../constants":18,"currency.js":23}],9:[function(require,module,exports) {
+},{"../../utils":3,"../../constants":19,"currency.js":24}],10:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -221,7 +221,7 @@ Object.defineProperty(exports, "default", {
 });
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./formatCurrency":15}],2:[function(require,module,exports) {
+},{"./formatCurrency":16}],3:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -247,7 +247,7 @@ Object.defineProperty(exports, "formatCurrency", {
 });
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./hardCopyObject":8,"./formatCurrency":9}],19:[function(require,module,exports) {
+},{"./hardCopyObject":9,"./formatCurrency":10}],20:[function(require,module,exports) {
 /*
 object-assign
 (c) Sindre Sorhus
@@ -339,25 +339,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 	return to;
 };
 
-},{}],24:[function(require,module,exports) {
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- */
-
-'use strict';
-
-var emptyObject = {};
-
-if ("development" !== 'production') {
-  Object.freeze(emptyObject);
-}
-
-module.exports = emptyObject;
-},{}],20:[function(require,module,exports) {
+},{}],21:[function(require,module,exports) {
 "use strict";
 
 /**
@@ -394,7 +376,25 @@ emptyFunction.thatReturnsArgument = function (arg) {
 };
 
 module.exports = emptyFunction;
-},{}],10:[function(require,module,exports) {
+},{}],25:[function(require,module,exports) {
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+'use strict';
+
+var emptyObject = {};
+
+if ("development" !== 'production') {
+  Object.freeze(emptyObject);
+}
+
+module.exports = emptyObject;
+},{}],11:[function(require,module,exports) {
 /** @license React v16.2.0
  * react.production.min.js
  *
@@ -417,7 +417,7 @@ var U={Children:{map:function(a,b,e){if(null==a)return a;var c=[];T(a,c,null,b,e
 d=a.key,g=a.ref,k=a._owner;if(null!=b){void 0!==b.ref&&(g=b.ref,k=G.current);void 0!==b.key&&(d=""+b.key);if(a.type&&a.type.defaultProps)var f=a.type.defaultProps;for(h in b)H.call(b,h)&&!I.hasOwnProperty(h)&&(c[h]=void 0===b[h]&&void 0!==f?f[h]:b[h])}var h=arguments.length-2;if(1===h)c.children=e;else if(1<h){f=Array(h);for(var l=0;l<h;l++)f[l]=arguments[l+2];c.children=f}return{$$typeof:r,type:a.type,key:d,ref:g,props:c,_owner:k}},createFactory:function(a){var b=J.bind(null,a);b.type=a;return b},
 isValidElement:K,version:"16.2.0",__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED:{ReactCurrentOwner:G,assign:m}},V=Object.freeze({default:U}),W=V&&U||V;module.exports=W["default"]?W["default"]:W;
 
-},{"object-assign":19,"fbjs/lib/emptyObject":24,"fbjs/lib/emptyFunction":20}],17:[function(require,module,exports) {
+},{"object-assign":20,"fbjs/lib/emptyFunction":21,"fbjs/lib/emptyObject":25}],18:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -431,61 +431,7 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 module.exports = ReactPropTypesSecret;
 
-},{}],21:[function(require,module,exports) {
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- */
-
-'use strict';
-
-/**
- * Use invariant() to assert state which your program assumes to be true.
- *
- * Provide sprintf-style format (only %s is supported) and arguments
- * to provide information about what broke and what you were
- * expecting.
- *
- * The invariant message will be stripped in production, but the invariant
- * will remain to ensure logic does not differ in production.
- */
-
-var validateFormat = function validateFormat(format) {};
-
-if ("development" !== 'production') {
-  validateFormat = function validateFormat(format) {
-    if (format === undefined) {
-      throw new Error('invariant requires an error message argument');
-    }
-  };
-}
-
-function invariant(condition, format, a, b, c, d, e, f) {
-  validateFormat(format);
-
-  if (!condition) {
-    var error;
-    if (format === undefined) {
-      error = new Error('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
-    } else {
-      var args = [a, b, c, d, e, f];
-      var argIndex = 0;
-      error = new Error(format.replace(/%s/g, function () {
-        return args[argIndex++];
-      }));
-      error.name = 'Invariant Violation';
-    }
-
-    error.framesToPop = 1; // we don't care about invariant's own frame
-    throw error;
-  }
-}
-
-module.exports = invariant;
-},{}],22:[function(require,module,exports) {
+},{}],23:[function(require,module,exports) {
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
@@ -548,7 +494,61 @@ if ("development" !== 'production') {
 }
 
 module.exports = warning;
-},{"./emptyFunction":20}],16:[function(require,module,exports) {
+},{"./emptyFunction":21}],22:[function(require,module,exports) {
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+'use strict';
+
+/**
+ * Use invariant() to assert state which your program assumes to be true.
+ *
+ * Provide sprintf-style format (only %s is supported) and arguments
+ * to provide information about what broke and what you were
+ * expecting.
+ *
+ * The invariant message will be stripped in production, but the invariant
+ * will remain to ensure logic does not differ in production.
+ */
+
+var validateFormat = function validateFormat(format) {};
+
+if ("development" !== 'production') {
+  validateFormat = function validateFormat(format) {
+    if (format === undefined) {
+      throw new Error('invariant requires an error message argument');
+    }
+  };
+}
+
+function invariant(condition, format, a, b, c, d, e, f) {
+  validateFormat(format);
+
+  if (!condition) {
+    var error;
+    if (format === undefined) {
+      error = new Error('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
+    } else {
+      var args = [a, b, c, d, e, f];
+      var argIndex = 0;
+      error = new Error(format.replace(/%s/g, function () {
+        return args[argIndex++];
+      }));
+      error.name = 'Invariant Violation';
+    }
+
+    error.framesToPop = 1; // we don't care about invariant's own frame
+    throw error;
+  }
+}
+
+module.exports = invariant;
+},{}],17:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -608,7 +608,7 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
 }
 
 module.exports = checkPropTypes;
-},{"./lib/ReactPropTypesSecret":17,"fbjs/lib/invariant":21,"fbjs/lib/warning":22}],11:[function(require,module,exports) {
+},{"./lib/ReactPropTypesSecret":18,"fbjs/lib/warning":23,"fbjs/lib/invariant":22}],12:[function(require,module,exports) {
 /** @license React v16.2.0
  * react.development.js
  *
@@ -1960,7 +1960,7 @@ if ("development" !== "production") {
     module.exports = react;
   })();
 }
-},{"object-assign":19,"prop-types/checkPropTypes":16,"fbjs/lib/invariant":21,"fbjs/lib/emptyObject":24,"fbjs/lib/warning":22,"fbjs/lib/emptyFunction":20}],6:[function(require,module,exports) {
+},{"object-assign":20,"prop-types/checkPropTypes":17,"fbjs/lib/emptyObject":25,"fbjs/lib/invariant":22,"fbjs/lib/warning":23,"fbjs/lib/emptyFunction":21}],7:[function(require,module,exports) {
 'use strict';
 
 if ("development" === 'production') {
@@ -1968,7 +1968,7 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react.development.js');
 }
-},{"./cjs/react.production.min.js":10,"./cjs/react.development.js":11}],12:[function(require,module,exports) {
+},{"./cjs/react.production.min.js":11,"./cjs/react.development.js":12}],13:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -2485,7 +2485,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
 
   return ReactPropTypes;
 };
-},{"./checkPropTypes":16,"./lib/ReactPropTypesSecret":17,"object-assign":19,"fbjs/lib/emptyFunction":20,"fbjs/lib/invariant":21,"fbjs/lib/warning":22}],13:[function(require,module,exports) {
+},{"./checkPropTypes":17,"./lib/ReactPropTypesSecret":18,"object-assign":20,"fbjs/lib/emptyFunction":21,"fbjs/lib/invariant":22,"fbjs/lib/warning":23}],14:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -2545,7 +2545,7 @@ module.exports = function() {
   return ReactPropTypes;
 };
 
-},{"./lib/ReactPropTypesSecret":17,"fbjs/lib/emptyFunction":20,"fbjs/lib/invariant":21}],7:[function(require,module,exports) {
+},{"./lib/ReactPropTypesSecret":18,"fbjs/lib/emptyFunction":21,"fbjs/lib/invariant":22}],8:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -2569,7 +2569,7 @@ if ("development" !== 'production') {
   // http://fb.me/prop-types-in-prod
   module.exports = require('./factoryWithThrowingShims')();
 }
-},{"./factoryWithTypeCheckers":12,"./factoryWithThrowingShims":13}],1:[function(require,module,exports) {
+},{"./factoryWithTypeCheckers":13,"./factoryWithThrowingShims":14}],1:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2676,14 +2676,11 @@ var CurrencyInput = function (_Component) {
   _createClass(CurrencyInput, [{
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
-      var prevGivenValue = prevProps.value,
-          prevGivenDefaultValue = prevProps.defaultValue;
-      var _props = this.props,
-          givenValue = _props.value,
-          givenDefaultValue = _props.defaultValue;
+      var prevGivenDefaultValue = prevProps.defaultValue;
+      var givenDefaultValue = this.props.defaultValue;
 
 
-      if (!prevGivenValue && givenValue || givenDefaultValue !== prevGivenDefaultValue) {
+      if (givenDefaultValue !== prevGivenDefaultValue) {
         this.setInitialValues();
       }
     }
@@ -2695,10 +2692,10 @@ var CurrencyInput = function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _props2 = this.props,
-          inputName = _props2.name,
-          className = _props2.className,
-          style = _props2.style;
+      var _props = this.props,
+          inputName = _props.name,
+          className = _props.className,
+          style = _props.style;
       var maskedValue = this.state.maskedValue;
 
 
@@ -2744,7 +2741,7 @@ CurrencyInput.defaultProps = {
   onChange: Function.prototype
 };
 exports.default = CurrencyInput;
-},{"./utils":2,"./constants/currencyConfigurations":3,"react":6,"prop-types":7}],0:[function(require,module,exports) {
+},{"./utils":3,"./constants/currencyConfigurations":4,"react":7,"prop-types":8}],0:[function(require,module,exports) {
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
 function Module() {
@@ -2762,7 +2759,7 @@ function Module() {
 module.bundle.Module = Module;
 
 if (!module.bundle.parent) {
-  var ws = new WebSocket('ws://localhost:51302/');
+  var ws = new WebSocket('ws://localhost:51498/');
   ws.onmessage = function(event) {
     var data = JSON.parse(event.data);
 
