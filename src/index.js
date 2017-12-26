@@ -95,10 +95,10 @@ class CurrencyInput extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { value: prevGivenValue, defaultValue: prevGivenDefaultValue } = prevProps
-    const { value: givenValue, defaultValue: givenDefaultValue } = this.props
+    const { defaultValue: prevGivenDefaultValue } = prevProps
+    const { defaultValue: givenDefaultValue } = this.props
 
-    if ((!prevGivenValue && givenValue) || givenDefaultValue !== prevGivenDefaultValue) {
+    if (givenDefaultValue !== prevGivenDefaultValue) {
       this.setInitialValues()
     }
   }
