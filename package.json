@@ -1,14 +1,14 @@
 {
   "name": "@pismo/react-currency-input",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "React currency input component",
   "main": "dist/index.js",
   "repository": "https://github.com/pismo/react-currency-input.git",
   "author": "Pismo",
   "license": "MIT",
   "scripts": {
-    "start": "parcel ./src/index.html -d ./demo -o",
-    "build": "parcel ./src/index.js"
+    "start": "NODE_ENV=development parcel ./src/index.html -d ./demo -o",
+    "build": "NODE_ENV=production parcel ./src/index.js"
   },
   "dependencies": {
     "currency.js": "^1.0.1",
